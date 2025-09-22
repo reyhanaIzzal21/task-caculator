@@ -1,4 +1,3 @@
-
 let currentResult = 0;
 
 function calculate(operation) {
@@ -10,9 +9,6 @@ function calculate(operation) {
     if (isNaN(angka1) || isNaN(angka2)) {
         hasilElement.textContent = 'Input tidak valid. Harap masukkan angka yang benar.';
         hasilElement.className = hasilElement.className.replace('text-gray-700', 'text-red-500');
-        setTimeout(() => {
-            hasilElement.className = hasilElement.className.replace('text-red-500', 'text-gray-700');
-        }, 2000);
         return;
     }
 
@@ -32,9 +28,6 @@ function calculate(operation) {
             if (angka2 === 0) {
                 hasilElement.textContent = 'Input tidak valid. Harap masukkan angka yang benar.';
                 hasilElement.className = hasilElement.className.replace('text-gray-700', 'text-red-500');
-                setTimeout(() => {
-                    hasilElement.className = hasilElement.className.replace('text-red-500', 'text-gray-700');
-                }, 2000);
                 return;
             }
             hasil = angka1 / angka2;
@@ -45,6 +38,10 @@ function calculate(operation) {
 
     // Format hasil untuk menampilkan desimal jika diperlukan
     currentResult = hasil;
+
+    // Reset warna ke normal untuk hasil yang berhasil
+    hasilElement.className = hasilElement.className.replace('text-red-500', 'text-gray-700');
+
     if (Number.isInteger(hasil)) {
         hasilElement.textContent = hasil.toString();
     } else {
@@ -58,23 +55,23 @@ function calculate(operation) {
     }, 200);
 }
 
-// function clearAll() {
-//     document.getElementById('angkaPertama').value = '';
-//     document.getElementById('angkaKedua').value = '';
-//     document.getElementById('hasil').textContent = '0';
-//     currentResult = 0;
+function clearAll() {
+    document.getElementById('angkaPertama').value = '';
+    document.getElementById('angkaKedua').value = '';
+    document.getElementById('hasil').textContent = '0';
+    currentResult = 0;
 
-//     // Reset warna jika ada error
-//     const hasilElement = document.getElementById('hasil');
-//     hasilElement.className = hasilElement.className.replace('text-red-500', 'text-gray-700');
-// }
+    // Reset warna ke normal
+    const hasilElement = document.getElementById('hasil');
+    hasilElement.className = hasilElement.className.replace('text-red-500', 'text-gray-700');
+}
 
 // Event listener untuk Enter key
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         const activeElement = document.activeElement;
         if (activeElement.id === 'angkaPertama' || activeElement.id === 'angkaKedua') {
-            calculate('+');
+            calculate('+'); // Default operation ketika Enter ditekan
         }
     }
 
@@ -96,8 +93,8 @@ document.addEventListener('keydown', function (event) {
             event.preventDefault();
             calculate('/');
             break;
-        // case 'Escape':
-        //     clearAll();
-        //     break;
+        case 'Escape':
+            clearAll();
+            break;
     }
 });
