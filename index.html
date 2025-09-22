@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <style>
+        body {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8 max-w-md w-full">
+        <h1 class="text-2xl font-bold text-gray-700 mb-8 text-center">Kalkulator Sederhana</h1>
+        
+        <!-- Input Fields -->
+        <div class="space-y-6 mb-8">
+            <div>
+                <label class="block text-gray-600 font-medium mb-2">Angka Pertama:</label>
+                <input 
+                    type="number" 
+                    id="angkaPertama" 
+                    placeholder="Masukkan angka pertama"
+                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-400 focus:outline-none transition-colors bg-white/70"
+                >
+            </div>
+            
+            <div>
+                <label class="block text-gray-600 font-medium mb-2">Angka Kedua:</label>
+                <input 
+                    type="number" 
+                    id="angkaKedua" 
+                    placeholder="Masukkan angka kedua"
+                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-400 focus:outline-none transition-colors bg-white/70"
+                >
+            </div>
+        </div>
+        
+        <!-- Operation Buttons -->
+        <div class="grid grid-cols-4 gap-4 mb-8">
+            <button 
+                onclick="calculate('+')" 
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg text-xl"
+            >
+                +
+            </button>
+            <button 
+                onclick="calculate('-')" 
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg text-xl"
+            >
+                -
+            </button>
+            <button 
+                onclick="calculate('*')" 
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg text-xl"
+            >
+                ×
+            </button>
+            <button 
+                onclick="calculate('/')" 
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg text-xl"
+            >
+                ÷
+            </button>
+        </div>
+        
+        <!-- Result -->
+        <div class="text-center">
+            <label class="block text-gray-600 font-medium mb-4 text-lg">Hasil:</label>
+            <div 
+                id="hasil" 
+                class="text-2xl font-bold text-gray-700 bg-gray-50 rounded-lg py-6 px-4 border-2 border-gray-100 min-h-[100px] flex items-center justify-center"
+            >
+                0
+            </div>
+        </div>
+    </div>
+
+    <!-- link js -->
+        <script src="main.js"></script>
+</body>
+</html>
